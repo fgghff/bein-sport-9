@@ -34,7 +34,7 @@
   <script>
     // استخراج الرابط من معلمات URL
     const urlParams = new URLSearchParams(window.location.search);
-    const videoUrl = "https://todtv-live-spo-prod.akamaized.net/Content/Channel/svc-spo-hd-16-dt/DASH/playlist.mpd?hdnts=st=1742492103~exp=1742668503~acl=*/Content/Channel/svc-spo-hd-16-dt/DASH/*~id=9DJC2AMWXMT8~data=aXA9MTU2LjE3OC4zMi40Ng~hmac=30818c927413665465e8fa2b89490979e4b53694fba11842f09d85a63447a4cc"; // الحصول على قيمة videoUrl من URL
+    const videoUrl = "https://todtv-live-spo-prod.akamaized.net/Content/Channel/svc-spo-hd-16-dt/DASH/playlist.mpd?hdnts=st=1742492103~exp=1742668503~acl=*/Content/Channel/svc-spo-hd-16-dt/DASH/*~id=9DJC2AMWXMT8~data=aXA9MTU2LjE3OC4zMi40Ng~hmac=30818c927413665465e8fa2b89490979e4b53694fba11842f09d85a63447a4cc03~acl=*/Content/Channel/svc-spo-hd-16-dt/DASH/*~id=9DJC2AMWXMT8~data=aXA9MTU2LjE3OC4zMi40Ng~hmac=30818c927413665465e8fa2b89490979e4b53694fba11842f09d85a63447a4cc"; // الحصول على قيمة videoUrl من URL
     // إذا لم يتم تقديم رابط، يتم استخدام الرابط الذي قدمته
     const defaultVideoUrl = "https://hamada-tv.com/none.mp4";
     const finalVideoUrl = videoUrl || defaultVideoUrl; // استخدام الرابط من URL أو الرابط الافتراضي
