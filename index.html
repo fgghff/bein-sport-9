@@ -1,314 +1,90 @@
-<!DOCTYPE html>
-
-<html lang="ar">
-
-<head>
-
-  <meta charset="UTF-8">
-
-  <title>JWPlayer DRM Setup - MPD Only</title>
-
-  <script src="https://content.jwplatform.com/libraries/Z79JsmAO.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.7.1/showdown.min.js"></script>
-
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-
-  <script src="https://developer-tools.jwplayer.com/js/tools.min.js"></script>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ربط مكتبة Font Awesome -->
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-  <style>
-
-    html, body { 
-
-      margin: 0; 
-
-      padding: 0; 
-
-      height: 100%; 
-
-      overflow: hidden; 
-
-      background-color: #000;
-
-      font-family: 'Cairo', sans-serif;
-
-    }
-
-    .jwplayer { position: relative; width: 100%; height: 100%; }
-
-    .jwplayer .jw-media video { width: 100%; height: 100%; object-fit: fill; }
-
-  </style>
-
-</head>
-
-<body>
-
-  <!-- منطقة عرض المشغل -->
-
-  <div id="my-jwplayer"></div>
-
-  
-
-  <script>
-
-    // تعريف متغير حالة التمدد
-
-    let isExpanded = false;
-
-    
-
-    // رمز SVG لزر التمدد
-
-    const expandSvg = `<svg fill="#7f8c8d" version="1.1" id="expand_icon" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 100 100" xml:space="preserve">
-
-      <g>
-
-        <path d="M22.661,20.5H36c1.104,0,2-0.896,2-2s-0.896-2-2-2H19c-1.104,0-2.5,1.276-2.5,2.381v17c0,1.104,0.896,2,2,2s2-0.896,2-2V24.876l16.042,15.791c0.391,0.391,1.027,0.586,1.539,0.586s1.086-0.195,1.477-0.586c0.781-0.781,0.812-2.237,0.031-3.019L22.661,20.5z"/>
-
-        <path d="M83,16.5H66c-1.104,0-2,0.896-2,2s0.896,2,2,2h12.605L61.647,37.648c-0.781,0.781-0.781,2.142,0,2.923c0.39,0.391,0.902,0.633,1.414,0.633s0.774-0.171,1.164-0.562l16.274-16.5v11.738c0,1.104,0.896,2,2,2s2-0.896,2-2v-17C84.5,17.776,84.104,16.5,83,16.5z"/>
-
-        <path d="M36.542,60.962L20.5,76.754V65.881c0-1.104-0.896-2-2-2s-2,0.896-2,2v17c0,1.104,1.396,1.619,2.5,1.619h17c1.104,0,2-0.896,2-2s-0.896-2-2-2H22.529L39.62,63.6c0.781-0.781,0.656-1.951-0.125-2.732C38.715,60.086,37.322,60.181,36.542,60.962z"/>
-
-        <path d="M82.5,63.881c-1.104,0-2,0.896-2,2v11.606L64.226,60.962c-0.78-0.781-1.923-0.781-2.703,0c-0.781,0.781-0.719,1.856,0.062,2.638l17.152,16.9H66c-1.104,0-2,0.896-2,2s0.896,2,2,2h17c1.104,0,1.5-0.515,1.5-1.619v-17C84.5,64.776,83.604,63.881,82.5,63.881z"/>
-
-      </g>
-
-    </svg>`;
-
-    
-
-    // دالة تهيئة المشغل مع إعدادات DRM
-
-    function setupPlayer(drmType = 'clearkey') {
-
-      const playerConfig = {
-
-        file: "https://todtv-live-spo-prod.akamaized.net/Content/Channel/svc-spo-hd-16-dt/DASH/playlist.mpd?hdnts=st=1742492103~exp=1742668503~acl=*/Content/Channel/svc-spo-hd-16-dt/DASH/*~id=9DJC2AMWXMT8~data=aXA9MTU2LjE3OC4zMi40Ng~hmac=30818c927413665465e8fa2b89490979e4b53694fba11842f09d85a63447a4cc",
-
-        width: "100%",
-
-        height: "100%",
-
-        autostart: true,
-
-        mute: true,
-
-        skin: {
-
-          name: "seven",
-
-          active: "#9b8d8d",
-
-          inactive: "#7f8c8d",
-
-          background: "#1e1e1e"
-
-        },
-
-        ui: {
-
-          controlbar: {
-
-            children: [
-
-              'playButton',
-
-              'previousButton',
-
-              'nextButton',
-
-              'timeSlider',
-
-              'currentTimeDisplay',
-
-              'durationDisplay',
-
-              'muteButton',
-
-              'volumeButton',
-
-              'captionsButton',
-
-              'qualityButton',
-
-              'playbackRateButton',
-
-              'settingsButton',
-
-              'shareButton',
-
-              'expandButton',
-
-              'fullscreenButton'
-
-            ]
-
-          }
-
+admin admin:
+<div class="channel-section">
+            <button class="scroll-btn scroll-left" onclick="scrollRow('row2', -300)">‹</button>
+            <div class="channel-row" id="row2"></div>
+            <button class="scroll-btn scroll-right" onclick="scrollRow('row2', 300)">›</button>
+        </div>
+
+        <div class="channel-section">
+            <button class="scroll-btn scroll-left" onclick="scrollRow('row3', -300)">‹</button>
+            <div class="channel-row" id="row3"></div>
+            <button class="scroll-btn scroll-right" onclick="scrollRow('row3', 300)">›</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>تم التطوير بواسطة FAST TV LIVE | <a href="tg://resolve?domain=FASTTVLIFE1">تابع قناة Telegram</a></p>
+    </footer>
+
+    <script>
+        const channels = [
+            { name: "beIN SPORTS 1", img: "https://j.top4top.io/p_3362zdhsx0.png", link: "https://fgghff.github.io/bein-sport-1/" },
+            { name: "beIN SPORTS 2", img: "https://j.top4top.io/p_3362adsia0.png", link: "https://fgghff.github.io/bein-sport-2-/" },
+            { name: "beIN SPORTS 3", img: "https://f.top4top.io/p_3362oh9mk0.jpg", link: "https://fgghff.github.io/bein-sport-3/" },
+            { name: "beIN SPORTS 4", img: "https://c.top4top.io/p_3362y1une0.jpg", link: "https://fgghff.github.io/bein-sport-4/" },
+            { name: "beIN SPORTS 5", img: "https://d.top4top.io/p_33628z9021.jpg", link: "https://fgghff.github.io/bein-sport-5-/" },
+            { name: "beIN SPORTS 6", img: "https://i.top4top.io/p_3362pluta0.jpg", link: "https://fgghff.github.io/bein-sport-6/" },
+            { name: "beIN SPORTS 7", img: "https://a.top4top.io/p_3362moewf0.jpg", link: "https://fdxddzss.github.io/Roor/" },
+            { name: "beIN SPORTS 8", img: "https://b.top4top.io/p_336218ty91.jpg", link: "https://fgghff.github.io/bein-sport-8/" },
+            { name: "beIN SPORTS 9", img: "https://c.top4top.io/p_3362m8dxn2.jpg", link: "https://fgghff.github.io/bein-sport-9/" },
+            { name: "beIN SPORT HD", img: "https://d.top4top.io/p_3362stbqz3.jpg", link: "https://fdxddzss.github.io/FAST-TV-LIFE-11/" },
+            { name: "Premier League", img: "https://a.top4top.io/p_3362b1k9h0.png", link: "https://fdxddzss.github.io/Gg/" },
+            { name: "beIN SPORTS News", img: "https://k.top4top.io/p_3362wii3i1.png", link: "https://fgghff.github.io/bein-sport-news-/" },
+            { name: "beIN SPORTS XTRA 1", img: "https://e.top4top.io/p_3362s2ab14.jpg", link: "https://fdxddzss.github.io/FAST-TV-LIFE-11/" },
+            { name: "beIN SPORTS XTRA 2", img: "https://i.top4top.io/p_3362geigl0.jpg", link: "https://fgghff.github.io/bein-sport-Xtra-2/" },
+            { name: "beIN SPORTS XTRA 3", img: "https://f.top4top.io/p_3362wjacn5.jpg", link: "https://fgghff.github.io/bein-sport-Xtra-3-/" },
+            { name: "beIN SPORTS 1 English", img: "https://g.top4top.io/p_3362k51pc6.jpg", link: "https://fgghff.github.io/bein-sport-1-EN/" },
+            { name: "beIN SPORTS 2 English", img: "https://i.top4top.io/p_33621vonx8.jpg", link: "https://fdxddzss.github.io/FAST-TV-LIFE-11/" },
+            { name: "beIN SPORTS 1 French", img: "https://h.top4top.io/p_3362qphtu7.jpg", link: "https://fdxddzss.github.io/FAST-TV-LIFE-11/" },
+            { name: "beIN SPORTS 2 French", img: "https://j.top4top.io/p_3362iove39.jpg", link: "https://fdxddzss.github.io/FAST-TV-LIFE-11/" },
+            { name: "beIN SPORTS 4K", img: "https://l.top4top.io/p_3362h45bb2.png", link: "https://fdxddzss.github.io/FAST-TV-LIFE-11/" },
+            { name: "beIN Movies 1 Premiere", img: "https://j.top4top.io/p_3362hny6u1.jpg", link: "https://fgghff.github.io/bein-movies-1/" },
+            { name: "beIN Movies 2 Action", img: "https://k.top4top.io/p_3362aiu9k2.jpg", link: "https://fgghff.github.io/bein-movies-2/" },
+
+{ name: "beIN Movies 3 Drama", img: "https://l.top4top.io/p_3362xjy793.jpg", link: "https://fgghff.github.io/bein-movies-3/" },
+            { name: "beIN Movies 4 Family", img: "https://a.top4top.io/p_33627ewjf4.jpg", link: "https://fgghff.github.io/bein-movies-4/" },
+            { name: "beIN Series 1", img: "https://b.top4top.io/p_3362qubtq5.jpg", link: "https://fgghff.github.io/bein-series-1/" },
+            { name: "beIN Series 2", img: "https://c.top4top.io/p_3362n4vke6.jpg", link: "https://hudaquran.netlify.app/" },
+            { name: "bein dream", img: "https://d.top4top.io/p_3362fmfvo7.jpg", link: "https://fgghff.github.io/bein-dream-/" }
+        ];
+
+        function scrollRow(rowId, amount) {
+            document.getElementById(rowId).scrollBy({ left: amount, behavior: 'smooth' });
         }
 
-      };
-
-      
-
-      if (drmType === 'clearkey') {
-
-        playerConfig.drm = {
-
-          clearkey: {
-
-            keyId: "98eedea3e547368886168bb7f8d2e903",
-
-            key: "305670ff7b7495b093e761a5e550697d"
-
-          }
-
-        };
-
-      } else if (drmType === 'clearKeys') {
-
-        playerConfig.drm = {
-
-          clearKeys: {
-
-            "98eedea3e547368886168bb7f8d2e903": "305670ff7b7495b093e761a5e550697d"
-
-          }
-
-        };
-
-      }
-
-      
-
-      return jwplayer("my-jwplayer").setup(playerConfig);
-
-    }
-
-    
-
-    // التهيئة الأولية للمشغل
-
-    var player = setupPlayer('clearkey');
-
-    
-
-    // إضافة زر التمدد إلى شريط التحكم
-
-    player.addButton(
-
-      expandSvg,
-
-      'تمدد الفيديو',
-
-      function() { toggleExpand(); },
-
-      'expandButton'
-
-    );
-
-    
-
-    function toggleExpand() {
-
-      const videoElement = document.querySelector("#my-jwplayer video");
-
-      if (!videoElement) return;
-
-      videoElement.style.objectFit = isExpanded ? 'fill' : 'contain';
-
-      isExpanded = !isExpanded;
-
-      updateExpandButtonTooltip();
-
-    }
-
-    
-
-    function updateExpandButtonTooltip() {
-
-      const button = document.querySelector('.jw-expandButton');
-
-      if (button) {
-
-        button.setAttribute('aria-label', isExpanded ? 'تصغير الفيديو' : 'تمدد الفيديو');
-
-      }
-
-    }
-
-    
-
-  //  window.onload = function() {
-
-  //    const videoElement = document.querySelector('#my-jwplayer video');
-
-  //    if (videoElement) { videoElement.style.objectFit = 'fill'; }
-
-  //    const soundToggleButton = document.createElement('button');
-
-  //    soundToggleButton.id = 'sound-toggle';
-
-   //   soundToggleButton.innerHTML = '<i class="fas fa-volume-mute"></i> تفعيل الصوت';
-
-   //   document.body.appendChild(soundToggleButton);
-
-      
-
-   //   soundToggleButton.addEventListener('click', function() {
-
-   //     const currentMute = player.getMute();
-
-   //     player.setMute(!currentMute);
-
-   //     soundToggleButton.innerHTML = !currentMute 
-
-    //      ? '<i class="fas fa-volume-mute"></i> تفعيل الصوت'
-
-   //       : '<i class="fas fa-volume-up"></i> كتم الصوت';
-
-  //    });
-
-   // };
-
-    
-
-    player.on('pause', function() { player.play(); });
-
-    
-
-    window.addEventListener("beforeunload", function () { player.stop(); });
-
-    document.addEventListener("visibilitychange", function() {
-
-      if (document.hidden) { player.stop(); }
-
-    });
-
-    
-
-    player.on('error', function(error) {
-
-      console.error("فشلت طريقة clearkey (" + error.message + ")، سيتم استخدام clearKeys كخطة بديلة");
-
-      jwplayer("my-jwplayer").remove();
-
-      player = setupPlayer('clearKeys');
-
-      player.addButton(expandSvg, 'تمدد الفيديو', function() { toggleExpand(); }, 'expandButton');
-
-    });
-
-  </script>
-
-<script src="https://www.drv.tw/inc/wd.js?s=kwcmfsyk8gjgzexem2p2cq"></script></body>
-
+        function loadChannels() {
+            ['row1', 'row2', 'row3'].forEach((row, index) => {
+                channels.slice(index * 9, (index + 1) * 9).forEach(channel => {
+                    const card = document.createElement('div');
+                    card.className = 'channel-card';
+                    card.innerHTML = <a href="${channel.link}" target="_blank"><img src="${channel.img}" class="channel-logo"><p class="channel-name">${channel.name}</p></a>;
+                    // منع نسخ الرابط عند الضغط مطولاً
+                    card.addEventListener('contextmenu', (e) => {
+                        e.preventDefault();
+                        window.location.href = 'https://t.me/FASTTVLIFE1';
+                    });
+                    document.getElementById(row).appendChild(card);
+                });
+            });
+        }
+
+        // منع نسخ الموقع
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && (e.key === 'u'  e.key === 'U'  e.key === 's' || e.key === 'S')) {
+                e.preventDefault();
+                window.location.href = 'https://t.me/FASTTVLIFE1';
+            }
+        });
+
+        // عند فتح أدوات المطورين
+        setInterval(() => {
+            if (window.outerWidth - window.innerWidth > 100 || window.outerHeight - window.innerHeight > 100) {
+                window.location.href = 'https://t.me/FASTTVLIFE1';
+            }
+        }, 1000);
+
+        loadChannels();
+    </script>
+
+</body>
 </html>
-
